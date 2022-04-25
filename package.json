@@ -1,0 +1,30 @@
+{
+  "name": "api-article",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Dimas Hartono",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^8.3.10",
+    "apollo-server-express": "^3.6.7",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "graphql": "^15.8.0",
+    "graphql-middleware": "^6.1.25",
+    "gtl-node": "^0.0.3",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.3.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

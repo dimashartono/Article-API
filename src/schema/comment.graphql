@@ -1,0 +1,57 @@
+extend type Query {
+	showAllComment: MessageQueryComment!
+	showAllCommentById(id: String!): MessageQueryComment!
+	showCommentById(id: String!): MessageQueryIdComment!
+}
+
+extend type Mutation {
+	addComment(input: InputComment!): MessageMutationComment!
+	deleteComment(id: String!): MessageMutationComment!
+	updateComment(id: String!, input: InputComment!): MessageMutationComment!
+}
+
+type RelationArticle {
+	_id: String
+	title: String
+	description: String
+	createdAt: String
+	updatedAt: String
+}
+
+input InputComment {
+	comment: String!
+	articleId: String!
+}
+
+interface IComment {
+	_id: String!
+	comment: String!
+	articleId: RelationArticle
+	createdAt: String
+	updatedAt: String
+}
+
+type Comment implements IComment {
+	_id: String!
+	comment: String!
+	articleId: RelationArticle
+	createdAt: String
+	updatedAt: String
+}
+
+type MessageMutationComment {
+	code: Int!
+	message: String!
+}
+
+type MessageQueryComment {
+	code: Int!
+	message: String!
+	data: [Comment]
+}
+
+type MessageQueryIdComment {
+	code: Int!
+	message: String!
+	data: Comment
+}

@@ -1,0 +1,58 @@
+extend type Query {
+	showAllArticle(options: OptionsArticle!): MessageQueryArticle!
+	showArticleById(id: String!): MessageQueryIdArticle!
+}
+
+extend type Mutation {
+	addArticle(input: InputArticle!): MessageMutationArticle!
+	deleteArticle(id: String!): MessageMutationArticle!
+	updateArticle(id: String!, input: InputArticle!): MessageMutationArticle!
+}
+
+input InputArticle {
+	title: String!
+	description: String!
+}
+
+input OptionsArticle {
+	sort: String
+	limit: Int!
+	offset: Int!
+}
+
+interface IArticle {
+	_id: String!
+	title: String!
+	description: String!
+}
+
+type Article implements IArticle {
+	_id: String!
+	title: String!
+	description: String!
+}
+
+type PaginationArticle {
+	total: Int!
+	page: Int!
+	limit: Int!
+	offset: Int!
+	results: [Article]
+}
+
+type MessageMutationArticle {
+	code: Int!
+	message: String!
+}
+
+type MessageQueryArticle {
+	code: Int!
+	message: String!
+	data: PaginationArticle
+}
+
+type MessageQueryIdArticle {
+	code: Int!
+	message: String!
+	data: Article
+}
